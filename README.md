@@ -31,7 +31,7 @@ PHP version: 8.0+ (tested with PHP 8)
 
 ## 📸 Screenshots
 
-| Registration Page | Sign In Page | Post Page |
-|-------------------|------------|-------------|
-| ![Registration page](app/assets/registration-view.png) | ![Sign In page](app/assets/login-view.png) | ![Post Page](app/assets/posts-view.png) |
+| Registration Page | Sign In Page | Post Page | Dashboard Page | Create Post Page |
+|-------------------|------------|-------------|-------------------|------------|
+| ![Registration page](app/assets/registration-view.png) | ![Sign In page](app/assets/login-view.png) | ![Post Page](app/assets/posts-view.png) | ![Dashboard Page](app/assets/dashboard-view.png) | ![Create Post Page](app/assets/create-post-view.png) |
 
