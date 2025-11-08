@@ -33,5 +33,5 @@ PHP version: 8.0+ (tested with PHP 8)
 
 | Registration Page | Sign In Page | Edit Modal |
 |-------------------|------------|-------------|
-| ![Form Screenshot](status-board/app/assets/registration-view.png) | ![List Screenshot](status-board/app/assets/login-view.png) | ![Edit Modal Screenshot](status-board/app/assets/posts-view.png) |
+| (status-board/app/assets/registration-view.png) | (status-board/app/assets/login-view.png) | (status-board/app/assets/posts-view.png) |
 
