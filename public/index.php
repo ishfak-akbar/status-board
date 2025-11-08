@@ -22,20 +22,31 @@ use App\Core\Router;
 use App\Core\Session;
 use App\Controllers\AuthController;
 use App\Controllers\DashboardController;
+use App\Controllers\PostController;
 
 Session::start();
 
 $router = new Router();
-$auth = new AuthController();
-$dash = new DashboardController();
 
-$router->get('/', fn() => $auth->showLogin());
-$router->get('/login', fn() => $auth->showLogin());
-$router->get('/register', fn() => $auth->showRegister());
-$router->get('/dashboard', fn() => $dash->index());
+// REMOVE THESE LINES - Don't instantiate controllers directly
+// $auth = new AuthController();
+// $dash = new DashboardController();
+// $post = new PostController();
 
-$router->post('/register', fn() => $auth->register());
-$router->post('/login', fn() => $auth->login());
-$router->get('/logout', fn() => $auth->logout());
+// USE ARRAY CALLBACKS INSTEAD:
+$router->get('/', [AuthController::class, 'showLogin']);
+$router->get('/login', [AuthController::class, 'showLogin']);
+$router->get('/register', [AuthController::class, 'showRegister']);
+$router->get('/dashboard', [DashboardController::class, 'index']);
+
+$router->post('/register', [AuthController::class, 'register']);
+$router->post('/login', [AuthController::class, 'login']);
+$router->get('/logout', [AuthController::class, 'logout']);
+
+// Routes for posts
+$router->get('/posts', [PostController::class, 'showPosts']);
+$router->get('/posts/create', [PostController::class, 'showCreatePost']);
+$router->post('/posts/create', [PostController::class, 'createPost']);
+$router->post('/posts/delete', [PostController::class, 'delete']);
 
 $router->dispatch($_SERVER['REQUEST_URI'] ?? '/', $_SERVER['REQUEST_METHOD'] ?? 'GET');

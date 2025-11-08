@@ -10,17 +10,36 @@
     <header>
         <h1>AuthBoard</h1>
         <?php if (!empty($_SESSION['user'])): ?>
-            <nav><a href="/dashboard">Dashboard</a> | <a href="/logout">Logout</a></nav>
+            <nav>
+                <a href="/dashboard">Dashboard</a>
+                <span class="separator">|</span>
+                <a href="/posts">Posts</a>
+                <span class="separator">|</span>
+                <?php 
+                $current_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+                if ($current_path !== '/posts' && $current_path !== '/posts/create'):
+                ?>
+                    <a href="/posts/create">Create Post</a>
+                    <span class="separator">|</span>
+                <?php endif; ?>
+                <a class="logout-Nav" href="/logout">Logout</a>
+            </nav>
         <?php endif; ?>
     </header>
 
     <main>
-        <?php echo $content ; ?>
+        <?php echo $content; ?>
     </main>
 
-    <footer>
-        <small>AuthBoard - teaching project</small>
-    </footer>
+    <?php 
+        $current_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        if ($current_path == '/dashboard'):
+        ?>
+        <footer>
+            <small>AuthBoard</small>
+        </footer>
+            
+        <?php endif; ?>
 </div>
 </body>
 </html>
