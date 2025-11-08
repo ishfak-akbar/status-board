@@ -1,4 +1,5 @@
-# AuthBoard - Mini PHP Auth Project
+# StatusBoard
+A modern, Facebook-inspired authentication and social posting platform built with PHP. StatusBoard provides a secure way for users to register, login, and share posts with the community.
 
 PHP version: 8.0+ (tested with PHP 8)
 A small teaching project demonstrating:
@@ -10,35 +11,32 @@ A small teaching project demonstrating:
 - Email sending (Mailtrap + PHPMailer)
 - Basic folder structure and simple styling
 
-## Requirements
+## 📦 Requirements
 - PHP 8.0+
 - Composer (for dependencies)
 - MySQL (or MariaDB)
 - Local webserver (XAMPP, Laragon, etc.)
 
-## Setup
-1. Unzip the project into your web root (or point your vhost to `AuthBoard/public`).
-2. Copy `.env.example` to `.env` and fill values (DB and Mailtrap credentials).
-3. Create the database and import `sql/schema.sql`.
-   Example:
-   ```sql
-   CREATE DATABASE authboard;
-   USE authboard;
-   -- then import the schema.sql file
-   ```
-4. Install composer dependencies:
-   ```bash
-   composer install
-   ```
-5. Start the server (if using built-in PHP server for testing):
-   ```bash
-   cd public
-   php -S localhost:8000
-   ```
-6. Visit `http://localhost:8000` (or your configured vhost).
+## 🚀 Features
+- **User Registration** - Secure account creation with email validation
+- **Login System** - Session-based authentication
+- **Create Posts** - Share thoughts with text and images
+- **Social Feed** - Browse posts from all users
+- **Post Management** - Edit and delete your own posts
+- **User Statistics** - Track your posting activity
+- **Responsive Design** - Works on all devices
+- **Modern UI** - Clean, dark-themed interface
+- **Real-time Updates** - Instant post creation and deletion
+- **User Avatars** - Automatic profile picture generation
 
-## Notes for instructors
-- Students should update `.env` with their Mailtrap sandbox credentials.
-- The project uses a tiny .env loader (no external dotenv package required).
-- Encourage students to read files under `app/` to understand flow.
+## 🛠️ Tech Stack
+- **PHP** - Server-side scripting
+- **MySQL** - Database management
+- **Session Management** - Secure user authentication
+- **HTML5** - Semantic markup
+- **CSS3** - Modern styling with gradients and animations
+- **JavaScript** - Client-side interactions
+- **Responsive Design** - Mobile-first approach
+
+
 
