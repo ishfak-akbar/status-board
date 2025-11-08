@@ -1,15 +1,6 @@
 # StatusBoard
 A modern, Facebook-inspired authentication and social posting platform built with PHP. StatusBoard provides a secure way for users to register, login, and share posts with the community.
-
 PHP version: 8.0+ (tested with PHP 8)
-A small teaching project demonstrating:
-- Registration & Login
-- Sessions
-- Simple Router
-- Namespaces & PSR-4 autoloading (composer)
-- Password hashing (password_hash)
-- Email sending (Mailtrap + PHPMailer)
-- Basic folder structure and simple styling
 
 ## 📦 Requirements
 - PHP 8.0+
@@ -38,5 +29,9 @@ A small teaching project demonstrating:
 - **JavaScript** - Client-side interactions
 - **Responsive Design** - Mobile-first approach
 
+## 📸 Screenshots
 
+| Registration Page | Sign In Page | Edit Modal |
+|-------------------|------------|-------------|
+| ![Form Screenshot](status-board/app/assets/registration-view.png) | ![List Screenshot](status-board/app/assets/login-view.png) | ![Edit Modal Screenshot](status-board/app/assets/posts-view.png) |
 
