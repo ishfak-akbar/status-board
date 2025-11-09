@@ -78,17 +78,14 @@ class PostController extends Controller {
         exit;
     }
 
-    // Fetch the post by ID using your Post model
     $post = Post::getById($postId);
 
-    // Check if post exists and user owns it
     if (!$post || $post['user_id'] != $user['id']) {
         Session::set('error', 'You can only delete your own posts');
         header('Location: /posts');
         exit;
     }
 
-    // Delete the post using your Post model
     Post::delete($postId);
 
     Session::set('success', 'Post deleted successfully');

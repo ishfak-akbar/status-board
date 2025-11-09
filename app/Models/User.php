@@ -30,11 +30,4 @@ class User {
         return (int)self::connect()->lastInsertId();
     }
 
-    public static function count(): int {
-        $stmt = self::connect()->prepare('SELECT COUNT(*) as total FROM users');
-        $stmt->execute();
-        $result = $stmt->fetch();
-        return (int)$result['total'];
-    }
-
 }

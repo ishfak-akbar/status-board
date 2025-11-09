@@ -12,11 +12,8 @@ class DashboardController extends Controller {
             header('Location: /login');
             exit;
         }
-        $totalUsers = User::count();
-        
         $this->view('dashboard.php', [
-            'user' => $user,
-            'totalUsers' => $totalUsers
+            'user' => $user
         ]);
     }
 }
