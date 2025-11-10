@@ -47,7 +47,6 @@ class Post {
     }
     public static function getById($id)
     {
-        // Your database query to get post by ID
         $stmt = self::connect()->prepare("SELECT * FROM posts WHERE id = ?");
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
@@ -55,7 +54,6 @@ class Post {
 
     public static function delete($id)
     {
-        // Your database query to delete post
         $stmt = self::connect()->prepare("DELETE FROM posts WHERE id = ?");
         return $stmt->execute([$id]);
     }

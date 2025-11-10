@@ -540,7 +540,7 @@ h2 {
 
 .empty-icon {
   font-size: 60px;
-  margin-bottom: 20px;
+  margin-top: -20px;
 }
 
 .empty-state h3 {
@@ -616,5 +616,129 @@ h2 {
 .avatar-circle.small {
   width: 40px;
   height: 40px;
+  font-size: 16px;
+}
+
+/*Dashboard Posts*/
+.dashboard-posts-section {
+  margin-top: 40px;
+}
+
+.section-title {
+  color: #dbdbdb;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.dashboard-posts-section .posts-container {
+  margin-top: 0;
+}
+
+.dashboard-posts-section .post {
+  border: 1px solid #2e2e2e;
+  border-radius: 12px;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 20px;
+}
+
+.dashboard-posts-section .post:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.dashboard-posts-section .post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #777777;
+}
+
+.dashboard-posts-section .user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dashboard-posts-section .user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-posts-section .post-user {
+  font-weight: 600;
+  color: #1c1c1c;
+  font-size: 16px;
+}
+
+.dashboard-posts-section .post-date {
+  font-size: 13px;
+  color: #1c1c1c;
+}
+
+.dashboard-posts-section .post-content {
+  margin-bottom: 16px;
+}
+
+.dashboard-posts-section .post-content p {
+  margin: 0;
+  line-height: 1.6;
+  color: #1c1c1c;
+  font-size: 15px;
+}
+
+.dashboard-posts-section .post-image {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.dashboard-posts-section .post-image img {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-posts-section .post-actions {
+  margin-left: auto;
+}
+
+.dashboard-posts-section .delete-btn {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background 0.2s ease;
+}
+
+.dashboard-posts-section .delete-btn:hover {
+  background: #b91c1c;
+}
+
+.dashboard-posts-section .no-posts {
+  text-align: center;
+  padding: 60px 20px;
+  background: #ffffff;
+  border: 2px dashed #626262;
+  border-radius: 12px;
+  color: #1c1c1c;
+}
+
+.dashboard-posts-section .no-posts-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.dashboard-posts-section .noposts {
+  margin-bottom: 20px;
   font-size: 16px;
 }

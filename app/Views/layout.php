@@ -36,7 +36,7 @@
         if ($current_path == '/dashboard'):
         ?>
         <footer>
-            <small>AuthBoard</small>
+            <small>StatusBoard</small>
         </footer>
             
         <?php endif; ?>

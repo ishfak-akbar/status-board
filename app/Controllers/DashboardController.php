@@ -3,7 +3,7 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\Core\Session;
-use App\Models\User;
+use App\Models\Post;
 
 class DashboardController extends Controller {
     public function index() {
@@ -12,8 +12,12 @@ class DashboardController extends Controller {
             header('Location: /login');
             exit;
         }
+        
+        $userPosts = Post::findByUserId($user['id']);
+        
         $this->view('dashboard.php', [
-            'user' => $user
+            'user' => $user,
+            'posts' => $userPosts 
         ]);
     }
 }
