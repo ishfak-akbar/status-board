@@ -23,6 +23,8 @@ use App\Core\Session;
 use App\Controllers\AuthController;
 use App\Controllers\DashboardController;
 use App\Controllers\PostController;
+use App\Controllers\CommentController;
+use App\Controllers\LikeController;
 
 Session::start();
 
@@ -48,5 +50,7 @@ $router->get('/posts', [PostController::class, 'showPosts']);
 $router->get('/posts/create', [PostController::class, 'showCreatePost']);
 $router->post('/posts/create', [PostController::class, 'createPost']);
 $router->post('/posts/delete', [PostController::class, 'delete']);
+$router->post('/like/toggle', [LikeController::class, 'toggleLike']);
+$router->post('/comment/add', [CommentController::class, 'addComment']);
 
 $router->dispatch($_SERVER['REQUEST_URI'] ?? '/', $_SERVER['REQUEST_METHOD'] ?? 'GET');

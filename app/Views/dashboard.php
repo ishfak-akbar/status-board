@@ -49,7 +49,10 @@ ob_start();
                 <a href="/posts/create" class="btn">Create Your First Post</a>
             </div>
         <?php else: ?>
-            <?php foreach ($posts as $post): ?>
+            <?php foreach ($posts as $post): 
+                $likeCount = \App\Models\Post::getLikesCount($post['id']);
+                $isLiked = \App\Models\Post::isLikedByUser($post['id'], $_SESSION['user']['id'] ?? 0);
+                $comments = \App\Models\Post::getComments($post['id']);?>
                 <div class="post">
                     <div class="post-header">
                         <div class="user-info">
@@ -78,11 +81,103 @@ ob_start();
                             </div>
                         <?php endif; ?>
                     </div>
+                    <div class="post-interactions">
+                        <div>
+                            <form method="POST" action="/like/toggle" class="like-form">
+                                <input type="hidden" name="post_id" value="<?= $post['id'] ?>">
+                                <button type="interaction" class="interaction-btn like-btn <?= $isLiked ? 'liked' : '' ?>">
+                                    <span class="interaction-icon"><?= $isLiked ? '❤️' : '💚' ?></span>
+                                    <span class="interaction-count"><?= $likeCount ?></span>
+                                </button>
+                            </form>
+                        </div>
+                        <div>
+                            <button type="interaction" class="interaction-btn comment-btn" onclick="toggleComments(<?= $post['id'] ?>)">
+                                <span class="interaction-icon">💬</span>
+                                <span class="interaction-count"><?= count($comments) ?></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Comments Section -->
+                    <div class="comments-section" id="comments-<?= $post['id'] ?>" style="display: none;">
+                        <div class="comments-list">
+                            <?php foreach ($comments as $comment): ?>
+                                <div class="comment">
+                                    <div class="comment-user"><?= htmlspecialchars($comment['user_name']) ?></div>
+                                    <div class="comment-content"><?= htmlspecialchars($comment['content']) ?></div>
+                                    <div class="comment-date"><?= date('M j, g:i A', strtotime($comment['created_at'])) ?></div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                        
+                        <div class="commentInput-Button">
+                            <div>
+                                <form method="POST" action="/comment/add" class="comment-form">
+                                    <input type="hidden" name="post_id" value="<?= $post['id'] ?>">
+                                    <div class="inputt">
+                                        <input type="text" name="content" placeholder="Write a comment..." required>
+                                    </div>
+                                    <button type="submitComment">➤</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
     </div>
 </div>
+<script>
+function toggleComments(postId) {
+    const commentsSection = document.getElementById('comments-' + postId);
+    if (commentsSection.style.display === 'none') {
+        commentsSection.style.display = 'block';
+    } else {
+        commentsSection.style.display = 'none';
+    }
+}
+
+// Fixed AJAX for likes
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.like-form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const likeBtn = this.querySelector('.like-btn');
+            const likeCount = this.querySelector('.interaction-count');
+            const likeIcon = this.querySelector('.interaction-icon');
+            
+            fetch('/like/toggle', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(count => {
+                likeCount.textContent = count;
+                if (likeBtn.classList.contains('liked')) {
+                    likeBtn.classList.remove('liked');
+                    likeIcon.textContent = '💚';
+                } else {
+                    likeBtn.classList.add('liked');
+                    likeIcon.textContent = '❤️';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error liking post. Please try again.');
+            });
+        });
+    });
+});
+</script>
+
 
 <?php
 $content = ob_get_clean();
