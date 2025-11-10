@@ -8,7 +8,7 @@
 <body>
 <div class="container">
     <header>
-        <h1>AuthBoard</h1>
+        <h1>StatusBoard</h1>
         <?php if (!empty($_SESSION['user'])): ?>
             <nav>
                 <a href="/dashboard">Dashboard</a>
