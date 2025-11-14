@@ -36,7 +36,7 @@ class AuthController extends Controller {
         // send welcome email (Mailtrap for dev)
         Mailer::send($email, 'Welcome to AuthBoard', "Hello $name,\n\nThanks for registering at AuthBoard.");
 
-        header('Location: /login');
+        header('Location: /dashboard');
     }
 
     public function login() {

@@ -52,5 +52,7 @@ $router->post('/posts/create', [PostController::class, 'createPost']);
 $router->post('/posts/delete', [PostController::class, 'delete']);
 $router->post('/like/toggle', [LikeController::class, 'toggleLike']);
 $router->post('/comment/add', [CommentController::class, 'addComment']);
+$router->get('/posts/edit', [PostController::class, 'showEdit']);
+$router->post('/posts/update', [PostController::class, 'update']);
 
 $router->dispatch($_SERVER['REQUEST_URI'] ?? '/', $_SERVER['REQUEST_METHOD'] ?? 'GET');

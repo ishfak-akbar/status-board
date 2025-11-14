@@ -63,33 +63,70 @@ class PostController extends Controller {
     }
 
     public function delete()
-{
-    $user = Session::get('user');
-    if (!$user) {
-        header('Location: /login');
-        exit;
-    }
+    {
+        $user = Session::get('user');
+        if (!$user) {
+            header('Location: /login');
+            exit;
+        }
 
-    $postId = $_POST['post_id'] ?? null;
-    
-    if (!$postId) {
-        Session::set('error', 'Post ID is required');
+        $postId = $_POST['post_id'] ?? null;
+        
+        if (!$postId) {
+            Session::set('error', 'Post ID is required');
+            header('Location: /posts');
+            exit;
+        }
+
+        $post = Post::getById($postId);
+
+        if (!$post || $post['user_id'] != $user['id']) {
+            Session::set('error', 'You can only delete your own posts');
+            header('Location: /posts');
+            exit;
+        }
+
+        Post::delete($postId);
+
+        Session::set('success', 'Post deleted successfully');
         header('Location: /posts');
         exit;
     }
+    public function showEdit() {
+        $user = Session::get('user');
+        if (!$user) {
+            header('Location: /login');
+            exit;
+        }
 
-    $post = Post::getById($postId);
+        $postId = $_GET['id'] ?? null;
+        $post = Post::getById($postId);
 
-    if (!$post || $post['user_id'] != $user['id']) {
-        Session::set('error', 'You can only delete your own posts');
-        header('Location: /posts');
-        exit;
+        if (!$post || $post['user_id'] != $user['id']) {
+            echo "You can only edit your own posts";
+            return;
+        }
+
+        $this->view('posts/edit.php', ['post' => $post]);
     }
 
-    Post::delete($postId);
+    public function update() {
+        $user = Session::get('user');
+        if (!$user) {
+            header('Location: /login');
+            exit;
+        }
 
-    Session::set('success', 'Post deleted successfully');
-    header('Location: /posts');
-    exit;
-}
+        $postId = $_POST['post_id'] ?? null;
+        $content = trim($_POST['content'] ?? '');
+
+        $post = Post::getById($postId);
+        
+        if (!$post || $post['user_id'] != $user['id']) {
+            echo "Unauthorized";
+            return;
+        }
+        Post::updatePost($postId, $content);
+        header('Location: /posts');
+    }
 }

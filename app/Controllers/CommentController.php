@@ -21,14 +21,14 @@ class CommentController extends Controller {
             return;
         }
 
-        // Verify the post exists before adding comment
+        
         $post = Post::getById($postId);
         if (!$post) {
             echo "Post not found";
             return;
         }
 
-        // Add comment
+
         $success = Post::addComment($postId, $user['id'], $content);
         
         if ($success) {

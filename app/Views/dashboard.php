@@ -138,7 +138,7 @@ function toggleComments(postId) {
     }
 }
 
-// Fixed AJAX for likes
+//AJAX for likes
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.like-form').forEach(form => {
         form.addEventListener('submit', function(e) {

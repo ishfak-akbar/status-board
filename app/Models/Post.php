@@ -77,7 +77,6 @@ class Post {
             $stmt = self::connect()->prepare('INSERT INTO likes (post_id, user_id) VALUES (?, ?)');
             return $stmt->execute([$postId, $userId]);
         } catch (PDOException $e) {
-            // Handle duplicate like (user already liked this post)
             return false;
         }
     }
@@ -101,6 +100,10 @@ class Post {
     public static function addComment(int $postId, int $userId, string $content): bool {
         $stmt = self::connect()->prepare('INSERT INTO comments (post_id, user_id, content) VALUES (?, ?, ?)');
         return $stmt->execute([$postId, $userId, $content]);
+    }
+    public static function updatePost(int $postId, string $content): bool {
+        $stmt = self::connect()->prepare('UPDATE posts SET content = ? WHERE id = ?');
+        return $stmt->execute([$content, $postId]);
     }
 
 }
