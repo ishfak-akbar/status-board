@@ -25,6 +25,7 @@ use App\Controllers\DashboardController;
 use App\Controllers\PostController;
 use App\Controllers\CommentController;
 use App\Controllers\LikeController;
+use App\Controllers\SearchController;
 
 Session::start();
 
@@ -54,5 +55,6 @@ $router->post('/like/toggle', [LikeController::class, 'toggleLike']);
 $router->post('/comment/add', [CommentController::class, 'addComment']);
 $router->get('/posts/edit', [PostController::class, 'showEdit']);
 $router->post('/posts/update', [PostController::class, 'update']);
+$router->get('/search', [SearchController::class, 'search']);
 
 $router->dispatch($_SERVER['REQUEST_URI'] ?? '/', $_SERVER['REQUEST_METHOD'] ?? 'GET');

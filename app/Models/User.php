@@ -29,5 +29,44 @@ class User {
         $stmt->execute([$name, $email, $password]);
         return (int)self::connect()->lastInsertId();
     }
+    public static function search(string $query): array {
+    $searchTerm = trim($query);
+    
+    if (empty($searchTerm)) {
+        return [];
+    }
+    
+    $stmt = self::connect()->prepare('
+        SELECT id, name, email, created_at 
+        FROM users 
+        WHERE 
+            name LIKE ? OR  -- Starts with search term
+            name LIKE ? OR  -- First name match  
+            name LIKE ? OR  -- Last name match
+            email = ?       -- Exact email match
+        ORDER BY name ASC
+        LIMIT 20
+    ');
+    
+    $startsWith = $searchTerm . '%';
+    $firstName = $searchTerm . ' %';
+    $lastName = '% ' . $searchTerm . '%';
+    
+    $stmt->execute([
+        $startsWith,  // starts with
+        $firstName,   // first name
+        $lastName,    // last name  
+        $searchTerm   // exact email
+    ]);
+    
+    return $stmt->fetchAll();
+}
+
+    public static function findById(int $userId): ?array {
+        $stmt = self::connect()->prepare('SELECT * FROM users WHERE id = ? LIMIT 1');
+        $stmt->execute([$userId]);
+        $row = $stmt->fetch();
+        return $row ?: null;
+    }
 
 }

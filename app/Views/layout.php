@@ -15,6 +15,8 @@
                 <span class="separator">|</span>
                 <a href="/posts">Posts</a>
                 <span class="separator">|</span>
+                <a href="/search">Search Users</a>
+                <span class="separator">|</span>
                 <?php 
                 $current_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
                 if ($current_path !== '/posts' && $current_path !== '/posts/create'):

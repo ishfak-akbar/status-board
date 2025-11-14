@@ -105,5 +105,16 @@ class Post {
         $stmt = self::connect()->prepare('UPDATE posts SET content = ? WHERE id = ?');
         return $stmt->execute([$content, $postId]);
     }
+    public static function getUserPostsWithDetails(int $userId): array {
+        $stmt = self::connect()->prepare('
+            SELECT p.*, u.name as user_name
+            FROM posts p 
+            JOIN users u ON p.user_id = u.id 
+            WHERE p.user_id = ?
+            ORDER BY p.created_at DESC
+        ');
+        $stmt->execute([$userId]);
+        return $stmt->fetchAll();
+    }
 
 }
