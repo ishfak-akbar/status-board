@@ -18,7 +18,7 @@ ob_start();
             <div class="stat-card">
                 <div class="stat-icon">📊</div>
                 <h3>Total Posts</h3>
-                <div class="stat-number">0</div>
+                <div class="stat-number"><?= count($posts) ?></div>
                 <p class="stat-description">Posts you've created</p>
             </div>
             
