@@ -65,12 +65,18 @@ ob_start();
                             </div>
                         </div>
                         <div class="post-actions">
-                            <form action="/posts/delete" method="POST" class="delete-form">
-                                <input type="hidden" name="post_id" value="<?= $post['id'] ?>">
-                                <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete this post?')">
-                                    Delete
-                                </button>
-                            </form>
+                            <div>
+                                <a href="/posts/edit?id=<?= $post['id'] ?>" class="edit-btn">&#9998;</a>
+                            </div>
+                            <div>
+                                <form action="/posts/delete" method="POST" class="delete-form">
+                                    <input type="hidden" name="post_id" value="<?= $post['id'] ?>">
+                                    <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete this post?')">
+                                        🗑️
+                                    </button>
+                                </form>
+                            </div>
+                            
                         </div>
                     </div>
                     <div class="post-content">
