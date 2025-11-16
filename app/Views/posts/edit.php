@@ -1,5 +1,5 @@
 <?php
-$title = 'Edit Post | AuthBoard';
+$title = 'Edit Post | StatusBoard';
 ob_start();
 ?>
 <div class="edit-container">

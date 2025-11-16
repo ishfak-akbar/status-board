@@ -1,5 +1,5 @@
 <?php
-$title = 'Register | AuthBoard';
+$title = 'Register | StatusBoard';
 ob_start();
 ?>
 <div class="box">

@@ -1,5 +1,5 @@
 <?php
-$title = 'Search Users | AuthBoard';
+$title = 'Search Users | StatusBoard';
 ob_start();
 ?>
 

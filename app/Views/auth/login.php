@@ -1,5 +1,5 @@
 <?php
-$title = 'Login | AuthBoard';
+$title = 'Login | StatusBoard';
 ob_start();
 ?>
 <div class="box">

@@ -1,5 +1,5 @@
 <?php
-$title = 'Create Post | AuthBoard';
+$title = 'Create Post | StatusBoard';
 ob_start();
 ?>
 <div class="create_container">

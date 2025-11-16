@@ -1,5 +1,5 @@
 <?php
-$title = 'Posts | AuthBoard';
+$title = 'Posts | StatusBoard';
 ob_start();
 ?>
 <div class="page-header">

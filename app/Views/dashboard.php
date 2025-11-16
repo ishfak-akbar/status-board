@@ -1,5 +1,5 @@
 <?php
-$title = 'Dashboard | AuthBoard';
+$title = 'Dashboard | StatusBoard';
 ob_start();
 ?>
 

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title><?= $title ?? 'AuthBoard' ?></title>
+    <title><?= $title ?? 'StatusBoard' ?></title>
     <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
